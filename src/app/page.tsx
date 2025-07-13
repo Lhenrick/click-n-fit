@@ -1,3 +1,12 @@
+import { Box } from "@mui/material";
+import BodyMap from "./components/BodyMap";
+import Header from "./components/Header";
+
 export default function Home() {
-  return <h1>Hello world. This app will make me a millionarie</h1>;
+  return (
+    <Box m={"4rem"}>
+      <Header />
+      <BodyMap />
+    </Box>
+  );
 }
