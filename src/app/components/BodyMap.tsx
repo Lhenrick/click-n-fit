@@ -72,8 +72,8 @@ export default function BodyMap() {
                   left: muscle.left,
                   width: muscle.width,
                   height: muscle.height,
-                  backgroundColor: "rgba(255, 0, 0, 0.3)",
                   borderRadius: muscle.borderRadius ?? "50%",
+                  backgroundColor: "transparent",
                   cursor: "pointer",
                   "&:hover": {
                     backgroundColor: "rgba(255, 0, 0, 0.5)",
