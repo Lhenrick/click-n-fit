@@ -1,9 +1,11 @@
 import { AppBar, Avatar, Box, Toolbar, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <AppBar
+      position="fixed"
       sx={{
         background: "#424242",
       }}
@@ -17,17 +19,16 @@ export default function Header() {
         }}
       >
         {/* Logo */}
-        <Box display="flex" alignItems="center" gap={1}>
-          <Image
-            src="/logo.png"
-            alt="Click N Fit Logo"
-            width={50}
-            height={40}
-          />
-          {/* <Typography variant="h6" sx={{ color: "white", fontWeight: 500 }}>
-            Click N Fit
-          </Typography> */}
-        </Box>
+        <Link href="/">
+          <Box display="flex" alignItems="center" gap={1}>
+            <Image
+              src="/logo.png"
+              alt="Click N Fit Logo"
+              width={50}
+              height={40}
+            />
+          </Box>
+        </Link>
 
         {/* User Greeting */}
         <Box display="flex" alignItems="center" gap={1}>

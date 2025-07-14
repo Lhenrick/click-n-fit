@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import ExerciseModal from "./ExerciseModal";
@@ -32,8 +32,11 @@ export default function BodyMap() {
         flexDirection: "column",
         alignItems: "center",
         maxWidth: "100%",
+        pt: 8,
+        px: 2,
       }}
     >
+      <Typography variant="h4">Body Map</Typography>
       <Button
         onClick={() =>
           setCurrentSide(currentSide === "front" ? "back" : "front")
