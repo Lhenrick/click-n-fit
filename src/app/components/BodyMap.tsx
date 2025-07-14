@@ -5,20 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import ExerciseModal from "./ExerciseModal";
 import { muscleExercises } from "../data/exercises";
-
-const muscles = [
-  { name: "Chest", top: "25%", left: "40%", side: "front" },
-  { name: "Chest", top: "25%", left: "52%", side: "front" },
-  { name: "Biceps", top: "32%", left: "31%", side: "front" },
-  { name: "Biceps", top: "32%", left: "62%", side: "front" },
-  { name: "Shoulders", top: "20%", left: "61%", side: "front" },
-  { name: "Shoulders", top: "20%", left: "31%", side: "front" },
-  { name: "Abs", top: "35%", left: "47%", side: "front" },
-  { name: "Quads", top: "65%", left: "40%", side: "front" },
-  { name: "Quads", top: "65%", left: "55%", side: "front" },
-
-  // Add more muscles here with adjusted top/left % based on the image
-];
+import { muscles } from "@/app/data/muscles";
 
 export default function BodyMap() {
   const [selectedMuscle, setSelectedMuscle] = useState<string | null>(null);
@@ -83,10 +70,10 @@ export default function BodyMap() {
                   position: "absolute",
                   top: muscle.top,
                   left: muscle.left,
-                  width: 50,
-                  height: 50,
+                  width: muscle.width,
+                  height: muscle.height,
                   backgroundColor: "rgba(255, 0, 0, 0.3)",
-                  borderRadius: "50%",
+                  borderRadius: muscle.borderRadius ?? "50%",
                   cursor: "pointer",
                   "&:hover": {
                     backgroundColor: "rgba(255, 0, 0, 0.5)",
