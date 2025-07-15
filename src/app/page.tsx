@@ -1,16 +1,16 @@
-import { Box } from "@mui/material";
-import Header from "./components/Header";
+"use client";
+
 import QuickNavigation from "./components/QuickNavigation";
 import DailyTip from "./components/DailyTip";
 import ProgressPreview from "./components/ProgressPreview";
+import PageWrapper from "./components/PageWrapper";
 
 export default function Home() {
   return (
-    <Box m={"4rem"}>
-      <Header />
+    <PageWrapper>
       <QuickNavigation />
       <DailyTip />
       <ProgressPreview />
-    </Box>
+    </PageWrapper>
   );
 }
