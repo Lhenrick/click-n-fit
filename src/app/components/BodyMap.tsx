@@ -8,22 +8,28 @@ import { muscleExercises } from "../data/exercises";
 import { muscles } from "@/app/data/muscles";
 
 export default function BodyMap() {
-  const [selectedMuscle, setSelectedMuscle] = useState<string | null>(null);
+  const [selectedMuscleId, setSelectedMuscleId] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentSide, setCurrentSide] = useState<"front" | "back">("front");
 
-  const handleMuscleClick = (name: string) => {
-    setSelectedMuscle(name);
+  const handleMuscleClick = (id: string) => {
+    setSelectedMuscleId(id);
     setModalOpen(true);
   };
 
   const handleClose = () => {
     setModalOpen(false);
-    setSelectedMuscle(null);
+    setSelectedMuscleId(null);
   };
 
   const imageSrc =
     currentSide === "front" ? "/bodypicture.jpeg" : "/bodypicture-back.jpeg";
+
+  // Find the display name of the selected muscle for the modal
+  const selectedMuscleName =
+    (selectedMuscleId &&
+      muscles.find((m) => m.id === selectedMuscleId)?.name) ||
+    "";
 
   return (
     <Box
@@ -82,16 +88,21 @@ export default function BodyMap() {
                     backgroundColor: "rgba(255, 0, 0, 0.5)",
                   },
                 }}
-                onClick={() => handleMuscleClick(muscle.name)}
+                onClick={() => handleMuscleClick(muscle.id)}
               />
             ))}
         </Box>
       </Box>
+
       <ExerciseModal
         open={modalOpen}
         onClose={handleClose}
-        muscle={selectedMuscle}
-        exercises={selectedMuscle ? muscleExercises[selectedMuscle] || [] : []}
+        muscle={selectedMuscleName}
+        exercises={
+          selectedMuscleId
+            ? muscleExercises[selectedMuscleId]?.groups || []
+            : []
+        }
       />
     </Box>
   );

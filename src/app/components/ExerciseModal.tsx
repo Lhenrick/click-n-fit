@@ -5,8 +5,11 @@ import { Box, Modal, Typography, List, ListItem } from "@mui/material";
 interface ExerciseModalProps {
   open: boolean;
   onClose: () => void;
-  muscle: string | null;
-  exercises: string[];
+  muscle: string;
+  exercises: {
+    category: string;
+    exercises: string[];
+  }[];
 }
 
 export default function ExerciseModal({
@@ -23,20 +26,30 @@ export default function ExerciseModal({
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
+          width: "90%",
+          maxWidth: 500,
+          maxHeight: "80vh",
           bgcolor: "background.paper",
           color: "black",
           boxShadow: 24,
           p: 4,
           borderRadius: 2,
-          width: 300,
+          overflowY: "auto",
         }}
       >
         <Typography variant="h6" gutterBottom>
           {muscle} Exercises
         </Typography>
         <List>
-          {exercises.map((ex, i) => (
-            <ListItem key={i}>{ex}</ListItem>
+          {exercises.map((group, i) => (
+            <Box key={i} sx={{ mb: 2 }}>
+              <ListItem sx={{ fontWeight: "bold" }}>{group.category}</ListItem>
+              {group.exercises.map((exercise, j) => (
+                <ListItem key={j} sx={{ pl: 4 }}>
+                  {exercise}
+                </ListItem>
+              ))}
+            </Box>
           ))}
         </List>
       </Box>

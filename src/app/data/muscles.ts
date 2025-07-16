@@ -1,5 +1,8 @@
+// /data/muscles.ts
+
 export interface Muscle {
-  name: string;
+  id: string; // Machine-readable key
+  name: string; // Display name
   top: string;
   left: string;
   borderRadius?: string;
@@ -10,7 +13,8 @@ export interface Muscle {
 
 export const muscles: Muscle[] = [
   {
-    name: "Chest",
+    id: "chest",
+    name: "Peitoral",
     top: "22%",
     left: "37%",
     borderRadius: "50%",
@@ -19,7 +23,8 @@ export const muscles: Muscle[] = [
     height: 100,
   },
   {
-    name: "Chest",
+    id: "chest",
+    name: "Peitoral",
     top: "22%",
     left: "50%",
     side: "front",
@@ -27,7 +32,8 @@ export const muscles: Muscle[] = [
     height: 100,
   },
   {
-    name: "Biceps",
+    id: "biceps",
+    name: "Bíceps",
     top: "28%",
     left: "31%",
     side: "front",
@@ -35,7 +41,8 @@ export const muscles: Muscle[] = [
     height: 120,
   },
   {
-    name: "Biceps",
+    id: "biceps",
+    name: "Bíceps",
     top: "28%",
     left: "62%",
     side: "front",
@@ -43,7 +50,8 @@ export const muscles: Muscle[] = [
     height: 120,
   },
   {
-    name: "Shoulders",
+    id: "trapezius",
+    name: "Trapézio",
     top: "20%",
     left: "61%",
     side: "front",
@@ -51,7 +59,8 @@ export const muscles: Muscle[] = [
     height: 70,
   },
   {
-    name: "Shoulders",
+    id: "shoulders",
+    name: "Deltóide",
     top: "20%",
     left: "31%",
     side: "front",
@@ -59,7 +68,8 @@ export const muscles: Muscle[] = [
     height: 70,
   },
   {
-    name: "Abs",
+    id: "abs",
+    name: "Abdômen",
     top: "31.5%",
     left: "43.7%",
     borderRadius: "30%",
@@ -68,7 +78,8 @@ export const muscles: Muscle[] = [
     height: 180,
   },
   {
-    name: "Quads",
+    id: "quads",
+    name: "Quadríceps",
     top: "53%",
     left: "36%",
     side: "front",
@@ -76,18 +87,17 @@ export const muscles: Muscle[] = [
     height: 300,
   },
   {
-    name: "Quads",
+    id: "quads",
+    name: "Quadríceps",
     top: "53%",
     left: "52%",
     side: "front",
     width: 100,
     height: 300,
   },
-
-  // Back Image muscles
-
   {
-    name: "Triceps",
+    id: "triceps",
+    name: "Tríceps",
     top: "25%",
     left: "34%",
     side: "back",
@@ -95,7 +105,8 @@ export const muscles: Muscle[] = [
     height: 100,
   },
   {
-    name: "Triceps",
+    id: "triceps",
+    name: "Tríceps",
     top: "25%",
     left: "60%",
     side: "back",
