@@ -34,7 +34,7 @@ const features = [
   {
     title: "My Progress",
     icon: <TimelineIcon sx={{ fontSize: 40, color: "#f57c00" }} />,
-    link: "/progress",
+    link: "/my-progress",
   },
   {
     title: "Treinos Prontos",
