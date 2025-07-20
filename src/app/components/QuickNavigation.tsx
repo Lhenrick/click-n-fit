@@ -22,9 +22,9 @@ const features = [
     link: "/body-map",
   },
   {
-    title: "Workout Plans",
+    title: "Wokout Builder",
     icon: <FitnessCenterIcon sx={{ fontSize: 40, color: "#388e3c" }} />,
-    link: "/premade-plans",
+    link: "/workout-builder",
   },
   {
     title: "Community",
