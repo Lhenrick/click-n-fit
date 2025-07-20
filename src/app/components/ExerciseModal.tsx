@@ -38,7 +38,7 @@ export default function ExerciseModal({
         }}
       >
         <Typography variant="h6" gutterBottom>
-          {muscle} Exercises
+          {muscle} Exercicios
         </Typography>
         <List>
           {exercises.map((group, i) => (

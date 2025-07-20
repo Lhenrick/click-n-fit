@@ -12,6 +12,7 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import MapIcon from "@mui/icons-material/Map";
 import GroupIcon from "@mui/icons-material/Group";
 import TimelineIcon from "@mui/icons-material/Timeline";
+import FeedIcon from "@mui/icons-material/Feed";
 import { useRouter } from "next/navigation";
 
 const features = [
@@ -23,7 +24,7 @@ const features = [
   {
     title: "Workout Plans",
     icon: <FitnessCenterIcon sx={{ fontSize: 40, color: "#388e3c" }} />,
-    link: "/workouts",
+    link: "/premade-plans",
   },
   {
     title: "Community",
@@ -34,6 +35,11 @@ const features = [
     title: "My Progress",
     icon: <TimelineIcon sx={{ fontSize: 40, color: "#f57c00" }} />,
     link: "/progress",
+  },
+  {
+    title: "Treinos Prontos",
+    icon: <FeedIcon sx={{ fontSize: 40, color: "#8746B9" }} />,
+    link: "/premade-plans",
   },
 ];
 
