@@ -7,6 +7,7 @@ import WorkoutCalendar from "../components/WorkoutCalendar";
 import ProgressCharts from "../components/ProgressCharts";
 import MuscleHeatmap from "../components/MuscleHeatmap";
 import CompletedPlansList from "../components/completedPlansList";
+import MotivationNote from "../components/MotivationNote";
 
 export default function MyProgressPage() {
   return (
@@ -58,7 +59,7 @@ export default function MyProgressPage() {
       {/* Motivation & Notes */}
       <Box mb={4}>
         <Typography variant="h6">Motivation & Notes</Typography>
-        {/* TODO: Add MotivationNote component */}
+        <MotivationNote />
       </Box>
     </Box>
   );
