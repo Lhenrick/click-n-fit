@@ -4,6 +4,7 @@ import { Box, Typography, Divider } from "@mui/material";
 import ProgressStats from "../components/ProgressStats";
 import Header from "../components/Header";
 import WorkoutCalendar from "../components/WorkoutCalendar";
+import ProgressCharts from "../components/ProgressCharts";
 
 export default function MyProgressPage() {
   return (
@@ -32,7 +33,7 @@ export default function MyProgressPage() {
       {/* Graphs */}
       <Box mb={4}>
         <Typography variant="h6">Progress Charts</Typography>
-        {/* TODO: Add ProgressCharts component */}
+        <ProgressCharts />
       </Box>
 
       {/* Body Map Heatmap */}
