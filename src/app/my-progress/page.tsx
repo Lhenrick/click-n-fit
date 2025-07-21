@@ -5,6 +5,8 @@ import ProgressStats from "../components/ProgressStats";
 import Header from "../components/Header";
 import WorkoutCalendar from "../components/WorkoutCalendar";
 import ProgressCharts from "../components/ProgressCharts";
+import MuscleHeatmap from "../components/MuscleHeatmap";
+import CompletedPlansList from "../components/completedPlansList";
 
 export default function MyProgressPage() {
   return (
@@ -39,13 +41,18 @@ export default function MyProgressPage() {
       {/* Body Map Heatmap */}
       <Box mb={4}>
         <Typography variant="h6">Muscle Heatmap</Typography>
-        {/* TODO: Add BodyMapHeatmap component */}
+        <MuscleHeatmap muscleFrequency={{ Chest: 6, Biceps: 3, Quads: 1 }} />
       </Box>
 
       {/* Completed Plans */}
       <Box mb={4}>
         <Typography variant="h6">Completed Plans</Typography>
-        {/* TODO: Add CompletedPlansList component */}
+        <CompletedPlansList
+          plans={[
+            { id: "1", name: "Full Body Starter", completedAt: "2025-07-15" },
+            { id: "2", name: "Leg Day Boost", completedAt: "2025-07-18" },
+          ]}
+        />
       </Box>
 
       {/* Motivation & Notes */}
