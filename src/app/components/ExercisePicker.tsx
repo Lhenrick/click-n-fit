@@ -1,7 +1,7 @@
 // components/ExercisePicker.tsx
 
 import { Box, Typography, Button } from "@mui/material";
-import { muscleExercises } from "../data/exercises";
+import { muscleExercises } from "../data/mexercises";
 
 interface Props {
   selectedMuscle: string | null;

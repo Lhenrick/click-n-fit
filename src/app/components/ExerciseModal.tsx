@@ -1,15 +1,13 @@
 "use client";
 
 import { Box, Modal, Typography, List, ListItem } from "@mui/material";
+import { MuscleExerciseGroup } from "../data/exercises";
 
 interface ExerciseModalProps {
   open: boolean;
   onClose: () => void;
   muscle: string;
-  exercises: {
-    category: string;
-    exercises: string[];
-  }[];
+  exercises: MuscleExerciseGroup[];
 }
 
 export default function ExerciseModal({
@@ -38,7 +36,7 @@ export default function ExerciseModal({
         }}
       >
         <Typography variant="h6" gutterBottom>
-          {muscle} Exercicios
+          {muscle} Exercícios
         </Typography>
         <List>
           {exercises.map((group, i) => (

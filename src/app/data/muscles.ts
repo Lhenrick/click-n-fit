@@ -9,6 +9,7 @@ export interface Muscle {
   side: "front" | "back";
   width: number;
   height: number;
+  rotate?: string;
 }
 
 export const muscles: Muscle[] = [
@@ -50,22 +51,24 @@ export const muscles: Muscle[] = [
     height: 120,
   },
   {
-    id: "trapezius",
-    name: "Trapézio",
-    top: "20%",
+    id: "deltoid",
+    name: "Deltóide",
+    top: "19%",
     left: "61%",
     side: "front",
-    width: 60,
-    height: 70,
+    rotate: "-40deg",
+    width: 58,
+    height: 100,
   },
   {
-    id: "shoulders",
+    id: "deltoid",
     name: "Deltóide",
-    top: "20%",
+    top: "19%",
     left: "31%",
     side: "front",
-    width: 60,
-    height: 70,
+    rotate: "40deg",
+    width: 58,
+    height: 100,
   },
   {
     id: "abs",
@@ -99,8 +102,9 @@ export const muscles: Muscle[] = [
     id: "triceps",
     name: "Tríceps",
     top: "25%",
-    left: "34%",
+    left: "33%",
     side: "back",
+    rotate: "15deg",
     width: 50,
     height: 100,
   },
@@ -112,5 +116,83 @@ export const muscles: Muscle[] = [
     side: "back",
     width: 50,
     height: 100,
+    rotate: "-20deg",
+  },
+
+  {
+    id: "dorsal",
+    name: "dorsal",
+    top: "19.5%",
+    left: "40%",
+    side: "back",
+    rotate: "-30deg",
+    width: 60,
+    height: 150,
+  },
+
+  {
+    id: "dorsal",
+    name: "dorsal",
+    top: "19.5%",
+    left: "52%",
+    side: "back",
+    rotate: "30deg",
+    width: 60,
+    height: 150,
+  },
+
+  {
+    id: "forearm",
+    name: "Antebraço",
+    top: "40%",
+    left: "65%",
+    side: "front",
+    rotate: "-11deg",
+    width: 55,
+    height: 150,
+  },
+
+  {
+    id: "forearm",
+    name: "Antebraço",
+    top: "40%",
+    left: "27%",
+    side: "front",
+    rotate: "11deg",
+    width: 55,
+    height: 150,
+  },
+
+  {
+    id: "lumbar",
+    name: "Lombar",
+    top: "30%",
+    left: "46.5%",
+    side: "back",
+    rotate: "90deg",
+    width: 55,
+    height: 125,
+  },
+
+  {
+    id: "glutes",
+    name: "Glúteos",
+    top: "38%",
+    left: "40%",
+    side: "back",
+    rotate: "0 deg",
+    width: 80,
+    height: 115,
+  },
+
+  {
+    id: "glutes",
+    name: "Glúteos",
+    top: "38%",
+    left: "49.5%",
+    side: "back",
+    rotate: "0 deg",
+    width: 80,
+    height: 115,
   },
 ];
