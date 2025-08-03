@@ -67,7 +67,7 @@ export default function Home() {
         ) : (
           <Grid container spacing={3}>
             {myPlans.map((plan) => (
-              <Grid item xs={12} sm={6} md={4} key={plan.id}>
+              <Grid size={12} key={plan.id}>
                 <WorkoutPlanCard plan={plan} onView={handleViewPlan} />
               </Grid>
             ))}

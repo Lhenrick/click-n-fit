@@ -1,7 +1,7 @@
 // components/MotivationNote.tsx
 "use client";
 
-import { Box, Typography, TextField, Paper } from "@mui/material";
+import { Typography, TextField, Paper } from "@mui/material";
 import { useState, useEffect } from "react";
 
 const quotes = [
@@ -27,6 +27,7 @@ export default function MotivationNote() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setNote(value);
+    setQuote(value);
     localStorage.setItem("weeklyNote", value);
   };
 

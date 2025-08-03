@@ -1,6 +1,7 @@
 "use client";
 
-import { Grid, Paper, Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid";
 
 interface ProgressStatsProps {
   totalWorkouts: number;
@@ -22,7 +23,7 @@ export default function ProgressStats({
   return (
     <Grid container spacing={3}>
       {stats.map((stat, index) => (
-        <Grid item xs={12} md={4} key={index}>
+        <Grid size={12} key={index}>
           <Paper
             elevation={3}
             sx={{ p: 3, textAlign: "center", borderRadius: 2 }}

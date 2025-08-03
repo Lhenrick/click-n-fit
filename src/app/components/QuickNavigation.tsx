@@ -54,7 +54,7 @@ export default function QuickNavigation() {
 
       <Grid container spacing={2}>
         {features.map((item) => (
-          <Grid item xs={6} sm={3} key={item.title}>
+          <Grid size={2} key={item.title}>
             <Card
               sx={{
                 height: "100%",
