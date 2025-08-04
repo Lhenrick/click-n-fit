@@ -61,6 +61,7 @@ export default function BodyMap() {
             position: "relative",
             width: 800,
             height: 1000,
+            px: 2,
           }}
         >
           <Image

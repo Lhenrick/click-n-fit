@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { Box, Button } from "@mui/material";
 import Image from "next/image";
-import { muscles } from "../data/muscles";
+import { muscles } from "../data/heatMapMuscles";
 
 interface Props {
   muscleFrequency: Record<string, number>; // e.g., { Chest: 5, Biceps: 3 }
@@ -49,10 +49,9 @@ export default function MuscleHeatmap({ muscleFrequency }: Props) {
                 left: muscle.left,
                 width: muscle.width,
                 height: muscle.height,
+                rotate: muscle.rotate,
                 borderRadius: muscle.borderRadius || "50%",
-                backgroundColor: getHeatColor(
-                  muscleFrequency[muscle.name] || 0
-                ),
+                backgroundColor: getHeatColor(muscleFrequency[muscle.id] || 0),
                 opacity: 0.7,
               }}
             />

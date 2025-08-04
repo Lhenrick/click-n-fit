@@ -15,6 +15,7 @@ import {
   Insights,
   Settings,
 } from "@mui/icons-material";
+import BottomNav from "../components/BottomNav";
 
 const featuresComingSoon = [
   {
@@ -88,6 +89,8 @@ export default function ComingSoonPage() {
         Continue treinando com o que já está disponível. O melhor ainda está por
         vir 💪
       </Typography>
+
+      <BottomNav />
     </Box>
   );
 }

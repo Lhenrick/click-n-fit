@@ -1,6 +1,14 @@
 "use client";
 
-import { Box, Modal, Typography, List, ListItem } from "@mui/material";
+import {
+  Box,
+  Modal,
+  Typography,
+  List,
+  ListItem,
+  IconButton,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { MuscleExerciseGroup } from "../data/exercises";
 
 interface ExerciseModalProps {
@@ -26,30 +34,43 @@ export default function ExerciseModal({
           transform: "translate(-50%, -50%)",
           width: "90%",
           maxWidth: 500,
-          maxHeight: "80vh",
+          height: "80vh", // fixed height to enable scrolling
           bgcolor: "background.paper",
           color: "black",
           boxShadow: 24,
-          p: 4,
           borderRadius: 2,
-          overflowY: "auto",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <Typography variant="h6" gutterBottom>
-          {muscle} Exercícios
-        </Typography>
-        <List>
-          {exercises.map((group, i) => (
-            <Box key={i} sx={{ mb: 2 }}>
-              <ListItem sx={{ fontWeight: "bold" }}>{group.category}</ListItem>
-              {group.exercises.map((exercise, j) => (
-                <ListItem key={j} sx={{ pl: 4 }}>
-                  {exercise}
+        {/* Scrollable content */}
+        <Box sx={{ p: 2, overflowY: "auto" }}>
+          {/* Close Button (scrolls with content) */}
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <IconButton onClick={onClose} sx={{ color: "grey.700" }}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
+
+          <Typography variant="h6" gutterBottom>
+            {muscle} Exercícios
+          </Typography>
+
+          <List>
+            {exercises.map((group, i) => (
+              <Box key={i} sx={{ mb: 2 }}>
+                <ListItem sx={{ fontWeight: "bold" }}>
+                  {group.category}
                 </ListItem>
-              ))}
-            </Box>
-          ))}
-        </List>
+                {group.exercises.map((exercise, j) => (
+                  <ListItem key={j} sx={{ pl: 4 }}>
+                    {exercise}
+                  </ListItem>
+                ))}
+              </Box>
+            ))}
+          </List>
+        </Box>
       </Box>
     </Modal>
   );
