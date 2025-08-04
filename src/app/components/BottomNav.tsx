@@ -51,7 +51,7 @@ export default function BottomNav() {
         />
         <BottomNavigationAction
           label="Community"
-          value="/community"
+          value="/coming-soon"
           icon={<GroupIcon />}
         />
         {/* <BottomNavigationAction

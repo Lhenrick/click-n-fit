@@ -29,7 +29,7 @@ const features = [
   {
     title: "Community",
     icon: <GroupIcon sx={{ fontSize: 40, color: "#d32f2f" }} />,
-    link: "/community",
+    link: "/coming-soon",
   },
   {
     title: "My Progress",
