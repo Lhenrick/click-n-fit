@@ -2,14 +2,7 @@
 import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-
-const tips = [
-  "Drink at least 2L of water today 💧",
-  "Small progress is still progress. Keep going! 💪",
-  "Don't skip stretching after your workout 🧘‍♂️",
-  "You don't have to be extreme, just consistent 🔁",
-  "Fuel your body with good food and better thoughts 🥦",
-];
+import { tips } from "../data/tips";
 
 export default function DailyTip() {
   const [tip, setTip] = useState("");

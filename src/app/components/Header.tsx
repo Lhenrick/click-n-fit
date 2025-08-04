@@ -33,9 +33,9 @@ export default function Header() {
         {/* User Greeting */}
         <Box display="flex" alignItems="center" gap={1}>
           <Typography variant="body1" sx={{ color: "white" }}>
-            Welcome back, Luan!
+            welcome back, user!
           </Typography>
-          <Avatar alt="Luan" src="/profile.jpg" />
+          <Avatar alt="profile" src="/profile.jpg" />
         </Box>
       </Toolbar>
     </AppBar>

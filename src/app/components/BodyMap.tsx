@@ -85,12 +85,12 @@ export default function BodyMap() {
                   transform: muscle.rotate
                     ? `rotate(${muscle.rotate})`
                     : "none",
-                  backgroundColor: "rgba(255, 0, 0, 0.5)", // let it transparent
+                  backgroundColor: "transparent", // let it transparent
                   cursor: "pointer",
 
-                  // "&:hover": {
-                  //   backgroundColor: "rgba(255, 0, 0, 0.5)",
-                  // },
+                  "&:hover": {
+                    backgroundColor: "rgba(255, 0, 0, 0.5)",
+                  },
                 }}
                 onClick={() => handleMuscleClick(muscle.id)}
               />

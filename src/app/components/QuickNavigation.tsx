@@ -5,7 +5,6 @@ import {
   CardActionArea,
   CardContent,
   Typography,
-  Grid,
   Box,
 } from "@mui/material";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
@@ -14,6 +13,7 @@ import GroupIcon from "@mui/icons-material/Group";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import FeedIcon from "@mui/icons-material/Feed";
 import { useRouter } from "next/navigation";
+import Grid from "@mui/material/Grid";
 
 const features = [
   {
@@ -47,17 +47,18 @@ export default function QuickNavigation() {
   const router = useRouter();
 
   return (
-    <Box sx={{ px: 2, mt: 4 }}>
+    <Box sx={{ px: 1, mt: 4 }}>
       <Typography variant="h5" gutterBottom>
         Quick Access
       </Typography>
 
       <Grid container spacing={2}>
         {features.map((item) => (
-          <Grid size={2} key={item.title}>
+          <Grid item xs={6} sm={4} md={3} key={item.title}>
             <Card
               sx={{
                 height: "100%",
+                width: "7rem",
                 borderRadius: 3,
                 boxShadow: 3,
                 transition: "0.3s",

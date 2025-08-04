@@ -6,7 +6,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import MapIcon from "@mui/icons-material/Map";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import GroupIcon from "@mui/icons-material/Group";
-import SettingsIcon from "@mui/icons-material/Settings";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -47,7 +46,7 @@ export default function BottomNav() {
         />
         <BottomNavigationAction
           label="Workouts"
-          value="/workouts"
+          value="/workout-builder"
           icon={<FitnessCenterIcon />}
         />
         <BottomNavigationAction
@@ -55,11 +54,11 @@ export default function BottomNav() {
           value="/community"
           icon={<GroupIcon />}
         />
-        <BottomNavigationAction
+        {/* <BottomNavigationAction
           label="Settings"
           value="/settings"
           icon={<SettingsIcon />}
-        />
+        /> */}
       </BottomNavigation>
     </Paper>
   );
