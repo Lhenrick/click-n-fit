@@ -6,6 +6,7 @@ import PlanPreview from "../components/PlanPreview";
 import ExercisePicker from "../components/ExercisePicker";
 import MuscleSelector from "../components/MuscleSelector";
 import Header from "../components/Header";
+import BottomNav from "../components/BottomNav";
 
 export default function WorkoutBuilderPage() {
   const [selectedMuscle, setSelectedMuscle] = useState<string | null>(null);
@@ -34,6 +35,7 @@ export default function WorkoutBuilderPage() {
       />
 
       <PlanPreview workoutPlan={workoutPlan} onRemove={handleRemoveExercise} />
+      <BottomNav />
     </Box>
   );
 }
