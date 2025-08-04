@@ -6,6 +6,7 @@ import WorkoutPlanCard from "../components/WorkoutPlanCard";
 import PlanModal from "../components/PlanModal";
 import { useState } from "react";
 import Header from "../components/Header";
+import BottomNav from "../components/BottomNav";
 
 export default function PreMadePlansPage() {
   const [selectedPlan, setSelectedPlan] = useState<WorkoutPlan | null>(null);
@@ -22,14 +23,14 @@ export default function PreMadePlansPage() {
   };
 
   return (
-    <Box sx={{ p: 10 }}>
+    <Box sx={{ p: 6 }}>
       <Header />
       <Typography variant="h4" gutterBottom>
         Pre-made Workout Plans
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={4}>
         {preMadeWorkoutPlans.map((plan) => (
-          <Grid size={2} key={plan.id}>
+          <Grid size={{ xs: 22, md: 4 }} key={plan.id}>
             <WorkoutPlanCard plan={plan} onView={handleViewPlan} />
           </Grid>
         ))}
@@ -39,6 +40,7 @@ export default function PreMadePlansPage() {
         onClose={handleCloseModal}
         plan={selectedPlan}
       />
+      <BottomNav />
     </Box>
   );
 }

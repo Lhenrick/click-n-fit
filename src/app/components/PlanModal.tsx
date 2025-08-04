@@ -57,7 +57,15 @@ export default function PlanModel({ open, onClose, plan }: Props) {
           ))}
         </div>
 
-        <Box sx={{ p: 2, display: "flex", justifyContent: "space-between" }}>
+        <Box
+          sx={{
+            p: 2,
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            gap: 2,
+            justifyContent: "space-between",
+          }}
+        >
           <Button
             variant="outlined"
             onClick={() =>
