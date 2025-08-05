@@ -10,7 +10,7 @@ import BottomNav from "../components/BottomNav";
 
 export default function WorkoutBuilderPage() {
   const [selectedMuscle, setSelectedMuscle] = useState<string | null>(null);
-  const [workoutPlan, setWorkoutPlan] = useState<string[]>([]); // Now using strings
+  const [workoutPlan, setWorkoutPlan] = useState<string[]>([]);
 
   const handleAddExercise = (exerciseName: string) => {
     setWorkoutPlan((prev) => [...prev, exerciseName]);
@@ -21,10 +21,10 @@ export default function WorkoutBuilderPage() {
   };
 
   return (
-    <Box sx={{ p: 10 }}>
+    <Box sx={{ p: 8 }}>
       <Header />
       <Typography variant="h4" gutterBottom>
-        Build Your Workout
+        Monte seu Treino
       </Typography>
 
       <MuscleSelector onSelect={setSelectedMuscle} />

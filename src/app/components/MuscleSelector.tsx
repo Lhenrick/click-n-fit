@@ -1,24 +1,24 @@
 import { Box, Button, Typography } from "@mui/material";
-import { muscles } from "@/app/data/muscles";
+import { muscles } from "../data/heatMapMuscles";
 
-export default function MuscleSelector({
-  onSelect,
-}: {
-  onSelect: (muscle: string) => void;
-}) {
-  const uniqueMuscles = [...new Set(muscles.map((m) => m.name))];
+interface Props {
+  onSelect: (muscleId: string) => void;
+}
+
+export default function MuscleSelector({ onSelect }: Props) {
+  const uniqueMuscles = Array.from(
+    new Map(muscles.map((m) => [m.id, m.name])).entries()
+  );
 
   return (
     <Box sx={{ my: 3 }}>
-      <Typography variant="h6">Choose a muscle group:</Typography>
-      <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mt: 1 }}>
-        {uniqueMuscles.map((muscle) => (
-          <Button
-            key={muscle}
-            variant="outlined"
-            onClick={() => onSelect(muscle)}
-          >
-            {muscle}
+      <Typography variant="h6" gutterBottom>
+        Selecione um grupo muscular:
+      </Typography>
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+        {uniqueMuscles.map(([id, name]) => (
+          <Button key={id} variant="outlined" onClick={() => onSelect(id)}>
+            {name}
           </Button>
         ))}
       </Box>
