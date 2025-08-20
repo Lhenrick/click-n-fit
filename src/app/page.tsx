@@ -9,6 +9,7 @@ import PageWrapper from "./components/PageWrapper";
 import WorkoutPlanCard from "./components/WorkoutPlanCard";
 import SavedPlanModal from "./components/SavedPlanModal";
 import { WorkoutPlan } from "./data/premadePlans";
+import SavedPlansList from "./components/SavedPlanList";
 
 export default function Home() {
   const [myPlans, setMyPlans] = useState<WorkoutPlan[]>([]);
@@ -59,6 +60,7 @@ export default function Home() {
         <Typography variant="h5" gutterBottom>
           My Saved Plans
         </Typography>
+        <SavedPlansList />
 
         {myPlans.length === 0 ? (
           <Typography>

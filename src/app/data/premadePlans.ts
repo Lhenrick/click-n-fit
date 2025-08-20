@@ -22,6 +22,12 @@ export interface WorkoutPlan {
   days: WorkoutDay[];
 }
 
+export interface SavedWorkoutPlan extends WorkoutPlan {
+  createdAt: string;
+  completed: boolean;
+  plan: Record<"A" | "B" | "C", { muscles: string[]; exercises: string[] }>;
+}
+
 export const preMadeWorkoutPlans: WorkoutPlan[] = [
   {
     id: "beginner-full-body",
