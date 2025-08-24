@@ -16,14 +16,25 @@ import CustomPlanModal, { CustomSavedPlan } from "./CustomPlanModal";
 // ---------- helpers ----------
 type DayKey = "A" | "B" | "C";
 type DayPlan = { muscles: string[]; exercises: string[] };
+type Rawplan = {
+  id?: string | number;
+  name?: string;
+  createdAt?: string;
+  plan?: {
+    A?: DayPlan;
+    B?: DayPlan;
+    C?: DayPlan;
+  };
+  exercises?: string[];
+};
 
-function isValidDateStr(s: any) {
-  const d = new Date(s);
+function isValidDateStr(s: string | undefined): s is string {
+  const d = new Date(s ?? "");
   return typeof s === "string" && !Number.isNaN(d.getTime());
 }
 
 // migrate older saved shapes -> CustomSavedPlan
-function normalizePlan(raw: any): CustomSavedPlan | null {
+function normalizePlan(raw: Rawplan): CustomSavedPlan | null {
   if (!raw) return null;
 
   // If it's already the right shape
@@ -92,7 +103,7 @@ export default function SavedPlansList() {
   useEffect(() => {
     const raw = JSON.parse(localStorage.getItem("savedPlans") || "[]");
     const normalized: CustomSavedPlan[] = raw
-      .map((p: any) => normalizePlan(p))
+      .map((p: Rawplan) => normalizePlan(p))
       .filter(Boolean);
 
     // If normalization changed anything (e.g., added createdAt), write it back

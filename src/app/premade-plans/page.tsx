@@ -23,7 +23,7 @@ export default function PreMadePlansPage() {
   };
 
   return (
-    <Box sx={{ p: 6 }}>
+    <Box sx={{ p: 6, my: 6 }}>
       <Header />
       <Typography variant="h4" gutterBottom>
         Pre-made Workout Plans

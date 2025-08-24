@@ -60,8 +60,9 @@ export default function BodyMap() {
           sx={{
             position: "relative",
             width: 800,
-            height: 1000,
+            height: 1400,
             px: 2,
+            my: 8,
           }}
         >
           <Image

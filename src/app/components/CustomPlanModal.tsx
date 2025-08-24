@@ -52,9 +52,11 @@ export default function CustomPlanModal({
   const updateLocalStoragePlan = (
     mutator: (p: CustomSavedPlan) => CustomSavedPlan | null
   ) => {
-    const raw = JSON.parse(localStorage.getItem("savedPlans") || "[]");
+    const raw: CustomSavedPlan[] = JSON.parse(
+      localStorage.getItem("savedPlans") || "[]"
+    );
     const updated = raw
-      .map((p: any) => (p.id === plan.id ? mutator({ ...p }) : p))
+      .map((p: CustomSavedPlan) => (p.id === plan.id ? mutator({ ...p }) : p))
       .filter(Boolean);
     localStorage.setItem("savedPlans", JSON.stringify(updated));
     onChange?.();
@@ -70,8 +72,10 @@ export default function CustomPlanModal({
   const handleDelete = () => {
     if (!confirm("Deseja excluir este plano? Essa ação não pode ser desfeita."))
       return;
-    const raw = JSON.parse(localStorage.getItem("savedPlans") || "[]");
-    const filtered = raw.filter((p: any) => p.id !== plan.id);
+    const raw: CustomSavedPlan[] = JSON.parse(
+      localStorage.getItem("savedPlans") || "[]"
+    );
+    const filtered = raw.filter((p: CustomSavedPlan) => p.id !== plan.id);
     localStorage.setItem("savedPlans", JSON.stringify(filtered));
     onChange?.();
     onClose();
