@@ -13,7 +13,6 @@ import GroupIcon from "@mui/icons-material/Group";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import FeedIcon from "@mui/icons-material/Feed";
 import { useRouter } from "next/navigation";
-import Grid from "@mui/material/Grid";
 
 const features = [
   {
@@ -22,7 +21,7 @@ const features = [
     link: "/body-map",
   },
   {
-    title: "Wokout Builder",
+    title: "Workout Builder",
     icon: <FitnessCenterIcon sx={{ fontSize: 40, color: "#388e3c" }} />,
     link: "/workout-builder",
   },
@@ -52,18 +51,43 @@ export default function QuickNavigation() {
         Quick Access
       </Typography>
 
-      <Grid container spacing={2}>
+      {/* Horizontal scroll container */}
+      <Box
+        role="list"
+        aria-label="Quick navigation"
+        sx={{
+          display: "flex",
+          gap: 2,
+          overflowX: "auto",
+          overflowY: "hidden",
+          pb: 1, // room for scrollbar
+          scrollSnapType: { xs: "x mandatory", sm: "x proximity" },
+          WebkitOverflowScrolling: "touch",
+          // optional: hide scrollbar (keeps accessibility)
+          "&::-webkit-scrollbar": { height: 8 },
+          "&::-webkit-scrollbar-thumb": {
+            bgcolor: "action.hover",
+            borderRadius: 999,
+          },
+        }}
+      >
         {features.map((item) => (
-          <Grid size={{ xs: 6, sm: 4, md: 3 }} key={item.title}>
+          <Box
+            key={item.title}
+            role="listitem"
+            sx={{
+              flex: "0 0 auto",
+              scrollSnapAlign: "start",
+            }}
+          >
             <Card
               sx={{
-                height: "100%",
-                width: "7rem",
+                width: 130, // ~8.125rem
                 borderRadius: 3,
                 boxShadow: 3,
-                transition: "0.3s",
+                transition: "transform 0.2s ease",
                 "&:hover": {
-                  transform: "scale(1.03)",
+                  transform: "translateY(-2px) scale(1.02)",
                   cursor: "pointer",
                 },
               }}
@@ -77,18 +101,20 @@ export default function QuickNavigation() {
                     alignItems: "center",
                     justifyContent: "center",
                     minHeight: 120,
+                    textAlign: "center",
+                    px: 1,
                   }}
                 >
                   {item.icon}
-                  <Typography variant="subtitle1" mt={1}>
+                  <Typography variant="subtitle2" mt={1} noWrap>
                     {item.title}
                   </Typography>
                 </CardContent>
               </CardActionArea>
             </Card>
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 }

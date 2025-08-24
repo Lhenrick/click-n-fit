@@ -54,7 +54,7 @@ export default function SavedPlanModal({
 
           <Divider sx={{ my: 2 }} />
 
-          {plan.days.map((day, index) => (
+          {(plan.days ?? []).map((day, index) => (
             <Box key={index} sx={{ mb: 3 }}>
               <Typography variant="h6">{day.day}</Typography>
               {day.exercises.map((exercise, i) => (

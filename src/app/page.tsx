@@ -9,7 +9,6 @@ import PageWrapper from "./components/PageWrapper";
 import WorkoutPlanCard from "./components/WorkoutPlanCard";
 import SavedPlanModal from "./components/SavedPlanModal";
 import { WorkoutPlan } from "./data/premadePlans";
-import SavedPlansList from "./components/SavedPlanList";
 
 export default function Home() {
   const [myPlans, setMyPlans] = useState<WorkoutPlan[]>([]);
@@ -18,8 +17,21 @@ export default function Home() {
   const [completedPlans, setCompletedPlans] = useState<string[]>([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem("myPlans");
-    if (saved) setMyPlans(JSON.parse(saved));
+    const savedRaw = localStorage.getItem("savedPlans");
+    const premadeRaw = localStorage.getItem("myPlans");
+
+    const savedPlans = savedRaw ? JSON.parse(savedRaw) : [];
+    const premadePlans = premadeRaw ? JSON.parse(premadeRaw) : [];
+
+    const mergedPlans = [
+      ...premadePlans,
+      ...savedPlans.filter(
+        (sp: WorkoutPlan) =>
+          !premadePlans.some((pp: WorkoutPlan) => pp.id === sp.id)
+      ),
+    ];
+
+    setMyPlans(mergedPlans);
 
     const completed = localStorage.getItem("completedPlans");
     if (completed) setCompletedPlans(JSON.parse(completed));
@@ -38,7 +50,19 @@ export default function Home() {
   const handleRemovePlan = (id: string) => {
     const filtered = myPlans.filter((p) => p.id !== id);
     setMyPlans(filtered);
-    localStorage.setItem("myPlans", JSON.stringify(filtered));
+
+    // Remove from premade plans
+    const premaderaw = localStorage.getItem("myPlans");
+    const premadePlans = premaderaw ? JSON.parse(premaderaw) : [];
+    const newPremade = premadePlans.filter((p: WorkoutPlan) => p.id !== id);
+    localStorage.setItem("myPlans", JSON.stringify(newPremade));
+
+    // Remove from saved plans
+    const savedRaw = localStorage.getItem("savedPlans");
+    const savedPlans = savedRaw ? JSON.parse(savedRaw) : [];
+    const newSaved = savedPlans.filter((p: WorkoutPlan) => p.id !== id);
+    localStorage.setItem("savedPlans", JSON.stringify(newSaved));
+
     handleCloseModal();
   };
 
@@ -60,7 +84,6 @@ export default function Home() {
         <Typography variant="h5" gutterBottom>
           My Saved Plans
         </Typography>
-        <SavedPlansList />
 
         {myPlans.length === 0 ? (
           <Typography>
