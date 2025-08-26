@@ -16,7 +16,7 @@ export const muscles: Muscle[] = [
   {
     id: "chest",
     name: "Peitoral",
-    top: "22%",
+    top: "29%",
     left: "37%",
     borderRadius: "50%",
     side: "front",
@@ -26,7 +26,7 @@ export const muscles: Muscle[] = [
   {
     id: "chest",
     name: "Peitoral",
-    top: "22%",
+    top: "29%",
     left: "50%",
     side: "front",
     width: 100,
@@ -35,7 +35,7 @@ export const muscles: Muscle[] = [
   {
     id: "biceps",
     name: "Bíceps",
-    top: "28%",
+    top: "34%",
     left: "31%",
     side: "front",
     width: 50,
@@ -44,7 +44,7 @@ export const muscles: Muscle[] = [
   {
     id: "biceps",
     name: "Bíceps",
-    top: "28%",
+    top: "34%",
     left: "62%",
     side: "front",
     width: 50,
@@ -53,7 +53,7 @@ export const muscles: Muscle[] = [
   {
     id: "deltoid",
     name: "Deltóide",
-    top: "19%",
+    top: "27%",
     left: "61%",
     side: "front",
     rotate: "-40deg",
@@ -63,7 +63,7 @@ export const muscles: Muscle[] = [
   {
     id: "deltoid",
     name: "Deltóide",
-    top: "19%",
+    top: "27%",
     left: "31%",
     side: "front",
     rotate: "40deg",
@@ -73,7 +73,7 @@ export const muscles: Muscle[] = [
   {
     id: "abs",
     name: "Abdômen",
-    top: "31.5%",
+    top: "36.5%",
     left: "43.7%",
     borderRadius: "30%",
     side: "front",
@@ -103,7 +103,7 @@ export const muscles: Muscle[] = [
   {
     id: "triceps",
     name: "Tríceps",
-    top: "25%",
+    top: "32%",
     left: "33%",
     side: "back",
     rotate: "15deg",
@@ -113,7 +113,7 @@ export const muscles: Muscle[] = [
   {
     id: "triceps",
     name: "Tríceps",
-    top: "25%",
+    top: "32%",
     left: "60%",
     side: "back",
     width: 50,
@@ -124,7 +124,7 @@ export const muscles: Muscle[] = [
   {
     id: "dorsal",
     name: "dorsal",
-    top: "19.5%",
+    top: "27.5%",
     left: "40%",
     side: "back",
     rotate: "-30deg",
@@ -135,7 +135,7 @@ export const muscles: Muscle[] = [
   {
     id: "dorsal",
     name: "dorsal",
-    top: "19.5%",
+    top: "27.5%",
     left: "52%",
     side: "back",
     rotate: "30deg",
@@ -146,7 +146,7 @@ export const muscles: Muscle[] = [
   {
     id: "forearm",
     name: "Antebraço",
-    top: "40%",
+    top: "42%",
     left: "65%",
     side: "front",
     rotate: "-11deg",
@@ -157,8 +157,8 @@ export const muscles: Muscle[] = [
   {
     id: "forearm",
     name: "Antebraço",
-    top: "40%",
-    left: "27%",
+    top: "42%",
+    left: "28%",
     side: "front",
     rotate: "11deg",
     width: 55,
@@ -168,7 +168,7 @@ export const muscles: Muscle[] = [
   {
     id: "lumbar",
     name: "Lombar",
-    top: "30%",
+    top: "35%",
     left: "46.5%",
     side: "back",
     rotate: "90deg",
@@ -179,7 +179,7 @@ export const muscles: Muscle[] = [
   {
     id: "glutes",
     name: "Glúteos",
-    top: "38%",
+    top: "41%",
     left: "40%",
     side: "back",
     rotate: "0 deg",
@@ -190,7 +190,7 @@ export const muscles: Muscle[] = [
   {
     id: "glutes",
     name: "Glúteos",
-    top: "38%",
+    top: "41%",
     left: "49.5%",
     side: "back",
     rotate: "0 deg",
@@ -245,18 +245,28 @@ export const muscles: Muscle[] = [
   {
     id: "trapezius",
     name: "Trapézio",
-    top: "14%",
-    left: "43.5%",
+    top: "23.5%",
+    left: "43.8%",
     side: "back",
     rotate: "-3deg",
-    width: 100,
+    width: 95,
     height: 120,
+  },
+  {
+    id: "trapezius",
+    name: "Trapézio",
+    top: "25%",
+    left: "41%",
+    side: "back",
+    rotate: "0deg",
+    width: 150,
+    height: 50,
   },
 
   {
     id: "calves",
     name: "Panturrilha",
-    top: "68%",
+    top: "63%",
     left: "39.5%",
     side: "back",
     rotate: "-3deg",
@@ -267,7 +277,7 @@ export const muscles: Muscle[] = [
   {
     id: "calves",
     name: "Panturrilha",
-    top: "68%",
+    top: "63%",
     left: "53.7%",
     side: "back",
     rotate: "-3deg",
