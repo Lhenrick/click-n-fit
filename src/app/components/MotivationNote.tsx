@@ -1,7 +1,6 @@
-// components/MotivationNote.tsx
 "use client";
 
-import { Typography, TextField, Paper } from "@mui/material";
+import { Typography, TextField, Paper, Button } from "@mui/material";
 import { useState, useEffect } from "react";
 
 const quotes = [
@@ -16,19 +15,32 @@ function getRandomQuote() {
 }
 
 export default function MotivationNote() {
+  const [draftNote, setDraftNote] = useState("");
   const [note, setNote] = useState("");
   const [quote, setQuote] = useState(getRandomQuote());
 
   useEffect(() => {
-    const saved = localStorage.getItem("weeklyNote");
-    if (saved) setNote(saved);
+    const savedNotes = JSON.parse(localStorage.getItem("weeklyNotes") || "[]");
+    if (savedNotes.length > 0) {
+      setNote(savedNotes[savedNotes.length - 1]);
+    }
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setNote(value);
-    setQuote(value);
-    localStorage.setItem("weeklyNote", value);
+    setDraftNote(e.target.value);
+  };
+
+  const handleSave = () => {
+    if (draftNote.trim()) {
+      setNote(draftNote);
+      // Save to localStorage as an array of notes
+      const savedNotes = JSON.parse(
+        localStorage.getItem("weeklyNotes") || "[]"
+      );
+      savedNotes.push(draftNote);
+      localStorage.setItem("weeklyNotes", JSON.stringify(savedNotes));
+      setDraftNote("");
+    }
   };
 
   return (
@@ -47,9 +59,32 @@ export default function MotivationNote() {
         minRows={4}
         maxRows={10}
         placeholder="Write about your goals, thoughts, or week..."
-        value={note}
+        value={draftNote}
         onChange={handleChange}
+        sx={{ mb: 2 }}
       />
+      <Button variant="contained" color="primary" onClick={handleSave}>
+        Save
+      </Button>
+
+      {note && (
+        <Paper
+          sx={{
+            mt: 3,
+            p: 2,
+            borderRadius: 2,
+            backgroundColor: "primary.light",
+          }}
+        >
+          <Typography
+            variant="subtitle2"
+            sx={{ color: (theme) => theme.palette.text.primary }}
+          >
+            Last Saved Note
+          </Typography>
+          <Typography>{note}</Typography>
+        </Paper>
+      )}
     </Paper>
   );
 }

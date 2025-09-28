@@ -21,7 +21,7 @@ export default function ProgressPreview() {
 
   return (
     <Box sx={{ mt: 4 }}>
-      <Card sx={{ borderRadius: 3, boxShadow: 3, backgroundColor: "#f0f0f0" }}>
+      <Card sx={{ borderRadius: 3, boxShadow: 3, backgroundColor: "primary" }}>
         <CardContent>
           <Typography variant="h6" gutterBottom>
             Your Progress
@@ -33,7 +33,7 @@ export default function ProgressPreview() {
               <Typography>Streak: {workoutStreak} days</Typography>
             </Box>
             <Box display="flex" alignItems="center" gap={1}>
-              <TimelineIcon color="secondary" />
+              <TimelineIcon color="primary" />
               <Typography>Last trained: {lastMuscleGroup}</Typography>
             </Box>
           </Stack>

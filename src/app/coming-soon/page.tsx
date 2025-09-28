@@ -53,7 +53,12 @@ const featuresComingSoon = [
 export default function ComingSoonPage() {
   return (
     <Box
-      sx={{ p: 6, textAlign: "center", minHeight: "100vh", bgcolor: "#f9f9f9" }}
+      sx={{
+        p: 10,
+        textAlign: "center",
+        minHeight: "100vh",
+        backgroundColor: (theme) => theme.palette.background.default,
+      }}
     >
       <Typography variant="h3" gutterBottom fontWeight={600}>
         Em Breve no Click’n’Fit

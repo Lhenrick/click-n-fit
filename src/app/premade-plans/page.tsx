@@ -30,7 +30,7 @@ export default function PreMadePlansPage() {
       </Typography>
       <Grid container spacing={4}>
         {preMadeWorkoutPlans.map((plan) => (
-          <Grid size={{ xs: 22, md: 4 }} key={plan.id}>
+          <Grid size={{ xs: 12, md: 4 }} key={plan.id}>
             <WorkoutPlanCard plan={plan} onView={handleViewPlan} />
           </Grid>
         ))}

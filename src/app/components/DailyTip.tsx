@@ -14,7 +14,7 @@ export default function DailyTip() {
 
   return (
     <Box sx={{ mt: 4 }}>
-      <Card sx={{ backgroundColor: "#f5f5f5", borderRadius: 3, boxShadow: 3 }}>
+      <Card sx={{ backgroundColor: "primary", borderRadius: 3, boxShadow: 3 }}>
         <CardContent sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <EmojiObjectsIcon sx={{ fontSize: 36, color: "#ffa000" }} />
           <Typography variant="body1">{tip}</Typography>

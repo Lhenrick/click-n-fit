@@ -1,0 +1,17 @@
+{
+  "nav.bodyMap": "Body Map",
+  "nav.workoutBuilder": "Workout Builder",
+  "nav.premadePlans": "Premade Plans",
+  "nav.myProgress": "My Progress",
+  "nav.community": "Community",
+  "header.welcome": "Welcome back, athlete!",
+  "cta.getStarted": "Get Started",
+  "title.myProgress": "My Progress",
+  "title.workoutBuilder": "Workout Builder",
+  "title.premadePlans": "Premade Plans",
+  "title.bodyMap": "Body Map",
+  "btn.add": "Add",
+  "btn.save": "Save",
+  "btn.delete": "Delete",
+  "picker.exercisesFor": "Exercises for"
+}

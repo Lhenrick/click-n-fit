@@ -35,14 +35,27 @@ export default function SavedPlanModal({
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
-      <DialogTitle sx={{ display: "flex", justifyContent: "space-between" }}>
+      <DialogTitle
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          backgroundColor: (theme) => theme.palette.primary.main,
+        }}
+      >
         {plan.name}
         <IconButton onClick={onClose}>
           <CloseIcon />
         </IconButton>
       </DialogTitle>
 
-      <DialogContent dividers sx={{ maxHeight: "70vh", overflowY: "auto" }}>
+      <DialogContent
+        dividers
+        sx={{
+          maxHeight: "70vh",
+          overflowY: "auto",
+          backgroundColor: (theme) => theme.palette.background.default,
+        }}
+      >
         <div id={`plan-pdf-${plan.id}`} style={{ padding: "20px" }}>
           <Typography variant="body1" gutterBottom>
             <strong>Goal:</strong> {plan.goal} <br />

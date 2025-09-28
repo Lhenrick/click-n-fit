@@ -1,3 +1,5 @@
+"use client";
+
 import { Box } from "@mui/material";
 import BodyMap from "../components/BodyMap";
 import BottomNav from "../components/BottomNav";

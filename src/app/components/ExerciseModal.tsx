@@ -44,7 +44,7 @@ export default function ExerciseModal({
         }}
       >
         {/* Scrollable content */}
-        <Box sx={{ p: 2, overflowY: "auto" }}>
+        <Box sx={{ p: 2, overflowY: "auto", color: "white" }}>
           {/* Close Button (scrolls with content) */}
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
             <IconButton onClick={onClose} sx={{ color: "grey.700" }}>

@@ -9,6 +9,7 @@ import PageWrapper from "./components/PageWrapper";
 import WorkoutPlanCard from "./components/WorkoutPlanCard";
 import SavedPlanModal from "./components/SavedPlanModal";
 import { WorkoutPlan } from "./data/premadePlans";
+import MotivationNoteCard from "./components/MotivationNoteCard";
 
 export default function Home() {
   const [myPlans, setMyPlans] = useState<WorkoutPlan[]>([]);
@@ -78,6 +79,7 @@ export default function Home() {
   return (
     <PageWrapper>
       <QuickNavigation />
+      <MotivationNoteCard />
       <DailyTip />
       <ProgressPreview />
       <Box sx={{ p: 3 }}>

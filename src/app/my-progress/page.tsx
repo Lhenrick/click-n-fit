@@ -13,7 +13,7 @@ import BottomNav from "../components/BottomNav";
 export default function MyProgressPage() {
   return (
     <Box
-      marginTop={6}
+      marginY={6}
       sx={{ px: { xs: 2, sm: 4, md: 8 }, py: { xs: 3, sm: 4, md: 6 } }}
     >
       <Header />
@@ -39,6 +39,7 @@ export default function MyProgressPage() {
         <Typography variant="h6">Workout Calendar</Typography>
         <WorkoutCalendar
           workoutDates={["2025-07-01", "2025-07-05", "2025-07-10"]}
+          className="calendarCard"
         />
       </Box>
 

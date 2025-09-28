@@ -1,7 +1,9 @@
 // components/ExercisePicker.tsx
 import { Box, Typography, Button } from "@mui/material";
-import { muscleExercises } from "../data/exercises"; // Adjust the path as needed
-import { MuscleExerciseGroup } from "../data/exercises";
+import { muscleExercises, MuscleExerciseGroup } from "../data/exercises";
+import { useEffect, useState } from "react";
+import { Catalog } from "../../lib/api";
+import { useI18n } from "../../i18n/I18nProvider";
 
 interface Props {
   selectedMuscle: string | null;
@@ -12,6 +14,26 @@ export default function ExercisePicker({
   selectedMuscle,
   onAddExercise,
 }: Props) {
+const { t } = useI18n();
+const [remoteGroups, setRemoteGroups] = useState<MuscleExerciseGroup[] | null>(null);
+useEffect(() => {
+  async function run() {
+    if (!selectedMuscle) return;
+    try {
+      const list = await Catalog.exercises(selectedMuscle);
+      // Map backend shape to local group shape
+      const groups: MuscleExerciseGroup[] = [{
+        category: "API",
+        exercises: list.map((x: any) => x.name)
+      }];
+      setRemoteGroups(groups);
+    } catch {
+      setRemoteGroups(null);
+    }
+  }
+  run();
+}, [selectedMuscle]);
+
   if (!selectedMuscle) {
     return (
       <Typography>Selecione um músculo para ver os exercícios.</Typography>
@@ -31,10 +53,10 @@ export default function ExercisePicker({
   return (
     <Box sx={{ mt: 3 }}>
       <Typography variant="h5" gutterBottom>
-        Exercícios para {muscleData.name}
+        {t('picker.exercisesFor')} {muscleData.name}
       </Typography>
 
-      {muscleData.groups.map(
+      {(remoteGroups ?? muscleData.groups).map(
         (group: MuscleExerciseGroup, groupIndex: number) => (
           <Box key={groupIndex} sx={{ mt: 2 }}>
             <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>

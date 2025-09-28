@@ -42,11 +42,17 @@ export default function BodyMap() {
         px: 2,
       }}
     >
-      <Typography variant="h4">Body Map</Typography>
+      <Typography variant="h4" gutterBottom>
+        Body Map
+      </Typography>
       <Button
         onClick={() =>
           setCurrentSide(currentSide === "front" ? "back" : "front")
         }
+        sx={{
+          backgroundColor: (theme) => theme.palette.primary.main,
+          color: (theme) => theme.palette.text.primary,
+        }}
       >
         Switch to {currentSide === "front" ? "back" : "front"} view
       </Button>
