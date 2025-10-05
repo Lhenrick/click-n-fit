@@ -1,12 +1,17 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import en from "./messages/en.json";
 import pt from "./messages/pt.json";
 
 type Locale = "en" | "pt";
 type Dict = Record<string, string>;
-
 const dictionaries: Record<Locale, Dict> = { en, pt };
 
 type Ctx = {
@@ -23,7 +28,8 @@ const I18nCtx = createContext<Ctx>({
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocale] = useState<Locale>(
-    (typeof window !== "undefined" && (localStorage.getItem("locale") as Locale)) ||
+    (typeof window !== "undefined" &&
+      (localStorage.getItem("locale") as Locale)) ||
       (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Locale) ||
       "en"
   );
@@ -36,12 +42,10 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   }, [locale]);
 
   const dict = dictionaries[locale] || {};
+  const t = (key: string, fallback?: string) => dict[key] ?? fallback ?? key;
 
-  const t = (key: string, fallback?: string) => {
-    return dict[key] ?? fallback ?? key;
-  };
-
-  const value = useMemo(() => ({ locale, setLocale, t }), [locale]);
+  // add `t` in deps to satisfy exhaustive-deps
+  const value = useMemo(() => ({ locale, setLocale, t }), [locale, t]);
 
   return <I18nCtx.Provider value={value}>{children}</I18nCtx.Provider>;
 }

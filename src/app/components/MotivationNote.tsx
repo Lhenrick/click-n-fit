@@ -17,9 +17,10 @@ function getRandomQuote() {
 export default function MotivationNote() {
   const [draftNote, setDraftNote] = useState("");
   const [note, setNote] = useState("");
-  const [quote, setQuote] = useState(getRandomQuote());
+  const [quote] = useState<string>(getRandomQuote()); // <- no unused setter
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const savedNotes = JSON.parse(localStorage.getItem("weeklyNotes") || "[]");
     if (savedNotes.length > 0) {
       setNote(savedNotes[savedNotes.length - 1]);
@@ -33,7 +34,6 @@ export default function MotivationNote() {
   const handleSave = () => {
     if (draftNote.trim()) {
       setNote(draftNote);
-      // Save to localStorage as an array of notes
       const savedNotes = JSON.parse(
         localStorage.getItem("weeklyNotes") || "[]"
       );

@@ -10,29 +10,37 @@ interface Props {
   onAddExercise: (exercise: string) => void;
 }
 
+type RemoteExercise = { name: string }; // <- remove `any`
+
 export default function ExercisePicker({
   selectedMuscle,
   onAddExercise,
 }: Props) {
-const { t } = useI18n();
-const [remoteGroups, setRemoteGroups] = useState<MuscleExerciseGroup[] | null>(null);
-useEffect(() => {
-  async function run() {
-    if (!selectedMuscle) return;
-    try {
-      const list = await Catalog.exercises(selectedMuscle);
-      // Map backend shape to local group shape
-      const groups: MuscleExerciseGroup[] = [{
-        category: "API",
-        exercises: list.map((x: any) => x.name)
-      }];
-      setRemoteGroups(groups);
-    } catch {
-      setRemoteGroups(null);
+  const { t } = useI18n();
+  const [remoteGroups, setRemoteGroups] = useState<
+    MuscleExerciseGroup[] | null
+  >(null);
+
+  useEffect(() => {
+    async function run() {
+      if (!selectedMuscle) return;
+      try {
+        const list = (await Catalog.exercises(
+          selectedMuscle
+        )) as RemoteExercise[];
+        const groups: MuscleExerciseGroup[] = [
+          {
+            category: "API",
+            exercises: list.map((x) => x.name),
+          },
+        ];
+        setRemoteGroups(groups);
+      } catch {
+        setRemoteGroups(null);
+      }
     }
-  }
-  run();
-}, [selectedMuscle]);
+    run();
+  }, [selectedMuscle]);
 
   if (!selectedMuscle) {
     return (
@@ -41,7 +49,6 @@ useEffect(() => {
   }
 
   const muscleData = muscleExercises[selectedMuscle];
-
   if (!muscleData) {
     return (
       <Typography>
@@ -53,7 +60,7 @@ useEffect(() => {
   return (
     <Box sx={{ mt: 3 }}>
       <Typography variant="h5" gutterBottom>
-        {t('picker.exercisesFor')} {muscleData.name}
+        {t("picker.exercisesFor")} {muscleData.name}
       </Typography>
 
       {(remoteGroups ?? muscleData.groups).map(
@@ -62,10 +69,9 @@ useEffect(() => {
             <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
               {group.category}
             </Typography>
-
-            {group.exercises.map((exercise, exerciseIndex) => (
+            {group.exercises.map((exercise, idx) => (
               <Button
-                key={exerciseIndex}
+                key={idx}
                 variant="contained"
                 size="small"
                 sx={{ mt: 1, mr: 1 }}
