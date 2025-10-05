@@ -1,0 +1,46 @@
+"use client";
+
+import { Box, Grid, Typography } from "@mui/material";
+import { preMadeWorkoutPlans, WorkoutPlan } from "../data/premadePlans";
+import WorkoutPlanCard from "../components/WorkoutPlanCard";
+import PlanModal from "../components/PlanModal";
+import { useState } from "react";
+import Header from "../components/Header";
+import BottomNav from "../components/BottomNav";
+
+export default function PreMadePlansPage() {
+  const [selectedPlan, setSelectedPlan] = useState<WorkoutPlan | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleViewPlan = (plan: WorkoutPlan) => {
+    setSelectedPlan(plan);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedPlan(null);
+  };
+
+  return (
+    <Box sx={{ p: 6, my: 6 }}>
+      <Header />
+      <Typography variant="h4" gutterBottom>
+        Pre-made Workout Plans
+      </Typography>
+      <Grid container spacing={4}>
+        {preMadeWorkoutPlans.map((plan) => (
+          <Grid size={{ xs: 12, md: 4 }} key={plan.id}>
+            <WorkoutPlanCard plan={plan} onView={handleViewPlan} />
+          </Grid>
+        ))}
+      </Grid>
+      <PlanModal
+        open={modalOpen}
+        onClose={handleCloseModal}
+        plan={selectedPlan}
+      />
+      <BottomNav />
+    </Box>
+  );
+}

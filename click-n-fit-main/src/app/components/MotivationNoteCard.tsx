@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Box, Paper, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
 export default function MotivationNoteCard() {
   const [savedNotes, setSavedNotes] = useState<string[]>([]);

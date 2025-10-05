@@ -1,0 +1,17 @@
+{
+  "nav.bodyMap": "Mapa Corporal",
+  "nav.workoutBuilder": "Montar Treino",
+  "nav.premadePlans": "Planos Prontos",
+  "nav.myProgress": "Meu Progresso",
+  "nav.community": "Comunidade",
+  "header.welcome": "Bem-vindo de volta, atleta!",
+  "cta.getStarted": "Come\u00e7ar",
+  "title.myProgress": "Meu Progresso",
+  "title.workoutBuilder": "Montar Treino",
+  "title.premadePlans": "Planos Prontos",
+  "title.bodyMap": "Mapa Corporal",
+  "btn.add": "Adicionar",
+  "btn.save": "Salvar",
+  "btn.delete": "Excluir",
+  "picker.exercisesFor": "Exerc\u00edcios para"
+}
