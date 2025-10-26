@@ -11,7 +11,7 @@ import React, {
 import en from "./messages/en.json";
 import pt from "./messages/pt.json";
 
-type Locale = "en" | "pt";
+export type Locale = "en" | "pt";
 type Dict = Record<string, string>;
 const dictionaries: Record<Locale, Dict> = { en, pt };
 
