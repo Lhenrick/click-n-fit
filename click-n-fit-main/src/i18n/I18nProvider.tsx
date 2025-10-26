@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from "
 import en from "./messages/en.json";
 import pt from "./messages/pt.json";
 
-type Locale = "en" | "pt";
+export type Locale = "en" | "pt";
 type Dict = Record<string, string>;
 
 const dictionaries: Record<Locale, Dict> = { en, pt };
@@ -35,11 +35,12 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     }
   }, [locale]);
 
-  const dict = dictionaries[locale] || {};
-
-  const t = (key: string, fallback?: string) => {
+  // Compute translations inside the callback and memoize by `locale` so the
+  // translation function is stable and safe to include in useMemo below.
+  const t = React.useCallback((key: string, fallback?: string) => {
+    const dict = dictionaries[locale] || {};
     return dict[key] ?? fallback ?? key;
-  };
+  }, [locale]);
 
   // Include `t` in the dependency array so that React knows the memoized
   // object should be updated if the translation function changes. This

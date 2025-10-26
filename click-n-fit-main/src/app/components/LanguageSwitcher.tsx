@@ -8,9 +8,9 @@ import {
   ListItemText,
 } from "@mui/material";
 import { useState } from "react";
-import { useI18n } from "../../i18n/I18nProvider";
+import { useI18n, Locale } from "../../i18n/I18nProvider";
 
-const LANGUAGES = [
+const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
   { code: "en", label: "English", flag: "🇺🇸" },
   { code: "pt", label: "Português", flag: "🇧🇷" },
 ];
@@ -27,7 +27,7 @@ export default function LanguageSwitcher() {
     setAnchorEl(null);
   };
 
-  const handleSelect = (code: string) => {
+  const handleSelect = (code: Locale) => {
     setLocale(code);
     handleClose();
   };

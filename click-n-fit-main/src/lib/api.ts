@@ -3,7 +3,8 @@
 export const API_BASE =
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api";
 
-function authHeader() {
+function authHeader(): Record<string, string> {
+  // Always return a plain string-to-string map (HeadersInit compatible)
   if (typeof window === "undefined") return {};
   const token = localStorage.getItem("auth_token");
   return token ? { Authorization: `Bearer ${token}` } : {};

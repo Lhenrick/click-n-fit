@@ -42,14 +42,15 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     }
   }, [locale]);
 
-  const dict = dictionaries[locale] || {};
-
-  // Wrap t in useCallback so it's stable
+  // Wrap t in useCallback so it's stable. Compute the dictionary inside the
+  // callback so the dependency can be the primitive `locale` (avoids the
+  // exhaustive-deps warning caused by object identity of `dict`).
   const t = useCallback(
     (key: string, fallback?: string) => {
+      const dict = dictionaries[locale] || {};
       return dict[key] ?? fallback ?? key;
     },
-    [dict]
+    [locale]
   );
 
   // Include `t` so consumers see updated function when locale changes
