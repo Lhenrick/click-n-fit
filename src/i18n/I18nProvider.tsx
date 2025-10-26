@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useMemo,
   useState,
+  useCallback,
 } from "react";
 import en from "./messages/en.json";
 import pt from "./messages/pt.json";
@@ -42,9 +43,16 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   }, [locale]);
 
   const dict = dictionaries[locale] || {};
-  const t = (key: string, fallback?: string) => dict[key] ?? fallback ?? key;
 
-  // add `t` in deps to satisfy exhaustive-deps
+  // Wrap t in useCallback so it's stable
+  const t = useCallback(
+    (key: string, fallback?: string) => {
+      return dict[key] ?? fallback ?? key;
+    },
+    [dict]
+  );
+
+  // Include `t` so consumers see updated function when locale changes
   const value = useMemo(() => ({ locale, setLocale, t }), [locale, t]);
 
   return <I18nCtx.Provider value={value}>{children}</I18nCtx.Provider>;

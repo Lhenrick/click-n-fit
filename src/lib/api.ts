@@ -16,7 +16,6 @@ export async function apiGet<T = unknown>(path: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-// generic POST, avoid `any`
 export async function apiPost<TResp = unknown, TBody = unknown>(
   path: string,
   body: TBody
@@ -29,6 +28,19 @@ export async function apiPost<TResp = unknown, TBody = unknown>(
   if (!res.ok) throw new Error(await res.text());
   return res.json() as Promise<TResp>;
 }
+
+// ---- Auth
+export const Auth = {
+  register: (data: {
+    email: string;
+    password: string;
+    name?: string;
+    locale?: string;
+  }) => apiPost<{ token: string }, typeof data>("/auth/register", data),
+  login: (data: { email: string; password: string }) =>
+    apiPost<{ token: string }, typeof data>("/auth/login", data),
+  me: () => apiGet<{ id: string; email: string; name?: string }>("/auth/me"),
+};
 
 export async function apiDelete<T = unknown>(path: string): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
@@ -48,19 +60,6 @@ export const Catalog = {
         muscle ? `?muscle=${encodeURIComponent(muscle)}` : ""
       }`
     ),
-};
-
-// ---- Auth
-export const Auth = {
-  register: (data: {
-    email: string;
-    password: string;
-    name?: string;
-    locale?: string;
-  }) => apiPost<{ token: string }, typeof data>("/auth/register", data),
-  login: (data: { email: string; password: string }) =>
-    apiPost<{ token: string }, typeof data>("/auth/login", data),
-  me: () => apiGet<{ id: string; email: string; name?: string }>("/auth/me"),
 };
 
 // ---- Plans

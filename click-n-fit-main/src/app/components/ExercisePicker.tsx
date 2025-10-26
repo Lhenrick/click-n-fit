@@ -1,9 +1,18 @@
 // components/ExercisePicker.tsx
+
 import { Box, Typography, Button } from "@mui/material";
-import { muscleExercises, MuscleExerciseGroup } from "../data/exercises";
+import { muscleExercises } from "../data/exercises";
 import { useEffect, useState } from "react";
-import { Catalog } from "../../lib/api";
+// Import the ExerciseItem type
+import { Catalog, ExerciseItem } from "../../lib/api";
 import { useI18n } from "../../i18n/I18nProvider";
+
+// Assuming MuscleExerciseGroup is defined locally or imported correctly
+interface MuscleExerciseGroup {
+  category: string;
+  exercises: string[];
+}
+// Note: muscleExercises and MuscleExerciseGroup are assumed to be defined/imported correctly
 
 interface Props {
   selectedMuscle: string | null;
@@ -14,29 +23,40 @@ export default function ExercisePicker({
   selectedMuscle,
   onAddExercise,
 }: Props) {
-const { t } = useI18n();
-const [remoteGroups, setRemoteGroups] = useState<MuscleExerciseGroup[] | null>(null);
-useEffect(() => {
-  async function run() {
-    if (!selectedMuscle) return;
-    try {
-      const list = await Catalog.exercises(selectedMuscle);
-      // Map backend shape to local group shape
-      // Define the shape of the remote exercise objects instead of using `any`.
-      // Each item returned from the API is expected to have at least a `name`
-      // property, so we type it accordingly. This removes the need for an
-      // explicit `any` cast and satisfies the linter.
-      const groups: MuscleExerciseGroup[] = [{
-        category: "API",
-        exercises: list.map((x: { name: string }) => x.name),
-      }];
-      setRemoteGroups(groups);
-    } catch {
-      setRemoteGroups(null);
+  const { t } = useI18n();
+  const [remoteGroups, setRemoteGroups] = useState<
+    MuscleExerciseGroup[] | null
+  >(null);
+
+  useEffect(() => {
+    async function run() {
+      if (!selectedMuscle) return;
+      try {
+        /**
+         * FIX 6: Change the expected type from 'string[]' to 'ExerciseItem[]'.
+         * This resolves the 'Type unknown is not assignable to type string[]' error.
+         */
+        const list: ExerciseItem[] = await Catalog.exercises(selectedMuscle);
+
+        // Map backend shape to local group shape
+        const groups: MuscleExerciseGroup[] = [
+          {
+            category: "API",
+            /**
+             * FIX 7: 'list' is now an array of objects ({name: string}),
+             * so the map callback correctly expects an object 'x', resolving
+             * the incompatible argument type error.
+             */
+            exercises: list.map((x) => x.name),
+          },
+        ];
+        setRemoteGroups(groups);
+      } catch {
+        setRemoteGroups(null);
+      }
     }
-  }
-  run();
-}, [selectedMuscle]);
+    run();
+  }, [selectedMuscle]);
 
   if (!selectedMuscle) {
     return (
@@ -57,7 +77,7 @@ useEffect(() => {
   return (
     <Box sx={{ mt: 3 }}>
       <Typography variant="h5" gutterBottom>
-        {t('picker.exercisesFor')} {muscleData.name}
+        {t("picker.exercisesFor")} {muscleData.name}
       </Typography>
 
       {(remoteGroups ?? muscleData.groups).map(

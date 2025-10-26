@@ -1,11 +1,24 @@
+// src/app/auth/page.tsx
+
 "use client";
 import { useState } from "react";
-import { Box, Button, Container, TextField, Typography, Tabs, Tab } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  TextField,
+  Typography,
+  Tabs,
+  Tab,
+} from "@mui/material";
 import { Auth } from "../../lib/api";
 import { setToken } from "../../lib/auth-store";
 
+type Mode = "login" | "register";
+// Removed: type TokenResponse = { token: string }; (Not needed with correct API typing)
+
 export default function AuthPage() {
-  const [mode, setMode] = useState<"login"|"register">("login");
+  const [mode, setMode] = useState<Mode>("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -13,16 +26,18 @@ export default function AuthPage() {
 
   const submit = async () => {
     try {
-      const res = mode === "login"
-        ? await Auth.login({ email, password })
-        : await Auth.register({ email, password, name });
+      /**
+       * FIX 5: Removed explicit ': TokenResponse' type annotation.
+       * 'res' is now correctly inferred as { token: string } from Auth.login/register.
+       */
+      const res =
+        mode === "login"
+          ? await Auth.login({ email, password })
+          : await Auth.register({ email, password, name });
+
       setToken(res.token);
       setMsg("OK!");
-    } catch (e) {
-      // Narrow the error type instead of using `any`. If it's an instance of
-      // Error we can safely grab the message, otherwise fall back to a
-      // generic message. This avoids the use of `any` and satisfies the
-      // @typescript-eslint/no-explicit-any rule.
+    } catch (e: unknown) {
       const message = e instanceof Error ? e.message : "Error";
       setMsg(message);
     }
@@ -30,16 +45,36 @@ export default function AuthPage() {
 
   return (
     <Container maxWidth="sm" sx={{ mt: 12 }}>
-      <Tabs value={mode} onChange={(_, v)=>setMode(v)}>
+      <Tabs value={mode} onChange={(_evt, v: Mode) => setMode(v)}>
         <Tab value="login" label="Login" />
         <Tab value="register" label="Register" />
       </Tabs>
+
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 2 }}>
         {mode === "register" && (
-          <TextField label="Name" value={name} onChange={e=>setName(e.target.value)} />
+          <TextField
+            label="Name"
+            value={name}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setName(e.target.value)
+            }
+          />
         )}
-        <TextField label="Email" value={email} onChange={e=>setEmail(e.target.value)} />
-        <TextField label="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)} />
+        <TextField
+          label="Email"
+          value={email}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setEmail(e.target.value)
+          }
+        />
+        <TextField
+          label="Password"
+          type="password"
+          value={password}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setPassword(e.target.value)
+          }
+        />
         <Button variant="contained" onClick={submit}>
           {mode === "login" ? "Login" : "Create account"}
         </Button>
