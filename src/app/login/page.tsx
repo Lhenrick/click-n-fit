@@ -212,11 +212,11 @@ export default function LoginPage() {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      fontSize: 12,
+                      fontSize: 16,
                       color: "rgba(148,163,184,0.9)",
                     }}
                   >
-                    <Typography
+                    {/* <Typography
                       sx={{
                         cursor: "pointer",
                         textDecoration: "underline",
@@ -228,7 +228,7 @@ export default function LoginPage() {
                       }}
                     >
                       Forgot your password?
-                    </Typography>
+                    </Typography> */}
 
                     <Typography sx={{ fontSize: 12 }}>
                       New here?{" "}

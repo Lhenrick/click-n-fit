@@ -246,6 +246,29 @@ export default function RegistrationPage() {
                       },
                     }}
                   />
+                  <Box
+                    sx={{
+                      mt: 1,
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      fontSize: 12,
+                      color: "rgba(148,163,184,0.9)",
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 16 }}>
+                      Already have an account?{" "}
+                      <span
+                        style={{
+                          cursor: "pointer",
+                          textDecoration: "underline",
+                        }}
+                        onClick={() => router.push("/login")}
+                      >
+                        Login
+                      </span>
+                    </Typography>
+                  </Box>
 
                   <Box sx={{ mt: 3, textAlign: "center" }}>
                     <Button
@@ -285,7 +308,7 @@ export default function RegistrationPage() {
                     </Typography>
                   )}
 
-                  <Typography
+                  {/* <Typography
                     variant="caption"
                     sx={{
                       mt: 3,
@@ -306,7 +329,7 @@ export default function RegistrationPage() {
                       Privacy Policy
                     </span>
                     .
-                  </Typography>
+                  </Typography> */}
                 </Box>
               </Box>
             </Box>
