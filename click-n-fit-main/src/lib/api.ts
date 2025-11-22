@@ -1,7 +1,6 @@
 // lib/api.ts
 
-export const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api";
+export const API_BASE = process.env.NEXT_PUBLIC_API_URL; // || "http://localhost:8080/api"
 
 function authHeader(): Record<string, string> {
   // Always return a plain string-to-string map (HeadersInit compatible)

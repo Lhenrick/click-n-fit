@@ -15,8 +15,8 @@ import {
   Insights,
   Settings,
 } from "@mui/icons-material";
-import BottomNav from "../components/BottomNav";
-import Header from "../components/Header";
+import BottomNav from "../../components/BottomNav";
+import Header from "../../components/Header";
 
 const featuresComingSoon = [
   {
