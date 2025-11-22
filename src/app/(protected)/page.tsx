@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { Box, Typography, Grid } from "@mui/material";
-import QuickNavigation from "./components/QuickNavigation";
-import DailyTip from "./components/DailyTip";
-import ProgressPreview from "./components/ProgressPreview";
-import PageWrapper from "./components/PageWrapper";
-import WorkoutPlanCard from "./components/WorkoutPlanCard";
-import SavedPlanModal from "./components/SavedPlanModal";
-import { WorkoutPlan } from "./data/premadePlans";
-import MotivationNoteCard from "./components/MotivationNoteCard";
+import QuickNavigation from "../components/QuickNavigation";
+import DailyTip from "../components/DailyTip";
+import ProgressPreview from "../components/ProgressPreview";
+import PageWrapper from "../components/PageWrapper";
+import WorkoutPlanCard from "../components/WorkoutPlanCard";
+import SavedPlanModal from "../components/SavedPlanModal";
+import { WorkoutPlan } from "../data/premadePlans";
+import MotivationNoteCard from "../components/MotivationNoteCard";
 
 export default function Home() {
   const [myPlans, setMyPlans] = useState<WorkoutPlan[]>([]);

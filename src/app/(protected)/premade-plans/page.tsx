@@ -1,12 +1,12 @@
 "use client";
 
 import { Box, Grid, Typography } from "@mui/material";
-import { preMadeWorkoutPlans, WorkoutPlan } from "../data/premadePlans";
-import WorkoutPlanCard from "../components/WorkoutPlanCard";
-import PlanModal from "../components/PlanModal";
+import { preMadeWorkoutPlans, WorkoutPlan } from "../../data/premadePlans";
+import WorkoutPlanCard from "../../components/WorkoutPlanCard";
+import PlanModal from "../../components/PlanModal";
 import { useState } from "react";
-import Header from "../components/Header";
-import BottomNav from "../components/BottomNav";
+import Header from "../../components/Header";
+import BottomNav from "../../components/BottomNav";
 
 export default function PreMadePlansPage() {
   const [selectedPlan, setSelectedPlan] = useState<WorkoutPlan | null>(null);

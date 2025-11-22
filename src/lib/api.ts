@@ -1,5 +1,5 @@
 export const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api";
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api/";
 
 function authHeader(): Record<string, string> {
   if (typeof window === "undefined") return {};
@@ -36,9 +36,9 @@ export const Auth = {
     password: string;
     name?: string;
     locale?: string;
-  }) => apiPost<{ token: string }, typeof data>("/auth/register", data),
+  }) => apiPost<{ token: string }, typeof data>("auth/register", data),
   login: (data: { email: string; password: string }) =>
-    apiPost<{ token: string }, typeof data>("/auth/login", data),
+    apiPost<{ token: string }, typeof data>("auth/login", data),
   me: () => apiGet<{ id: string; email: string; name?: string }>("/auth/me"),
 };
 
@@ -53,7 +53,7 @@ export async function apiDelete<T = unknown>(path: string): Promise<T> {
 
 // ---- Catalog
 export const Catalog = {
-  muscles: () => apiGet<string[]>("/catalog/muscles"),
+  muscles: () => apiGet<string[]>("catalog/muscles"),
   exercises: (muscle?: string) =>
     apiGet<Array<{ name: string }>>(
       `/catalog/exercises${
