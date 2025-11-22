@@ -16,6 +16,7 @@ import {
   Settings,
 } from "@mui/icons-material";
 import BottomNav from "../components/BottomNav";
+import Header from "../components/Header";
 
 const featuresComingSoon = [
   {
@@ -60,6 +61,7 @@ export default function ComingSoonPage() {
         backgroundColor: (theme) => theme.palette.background.default,
       }}
     >
+      <Header />
       <Typography variant="h3" gutterBottom fontWeight={600}>
         Em Breve no Click’n’Fit
       </Typography>

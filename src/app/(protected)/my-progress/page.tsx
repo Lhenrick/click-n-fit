@@ -1,14 +1,14 @@
 "use client";
 
 import { Box, Typography, Divider } from "@mui/material";
-import ProgressStats from "../components/ProgressStats";
-import Header from "../components/Header";
-import WorkoutCalendar from "../components/WorkoutCalendar";
-import ProgressCharts from "../components/ProgressCharts";
-import MuscleHeatmap from "../components/MuscleHeatmap";
-import CompletedPlansList from "../components/completedPlansList";
-import MotivationNote from "../components/MotivationNote";
-import BottomNav from "../components/BottomNav";
+import ProgressStats from "../../components/ProgressStats";
+import Header from "../../components/Header";
+import WorkoutCalendar from "../../components/WorkoutCalendar";
+import ProgressCharts from "../../components/ProgressCharts";
+import MuscleHeatmap from "../../components/MuscleHeatmap";
+import CompletedPlansList from "../../components/completedPlansList";
+import MotivationNote from "../../components/MotivationNote";
+import BottomNav from "../../components/BottomNav";
 
 export default function MyProgressPage() {
   return (

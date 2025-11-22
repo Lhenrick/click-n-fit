@@ -3,12 +3,12 @@
 
 import { useState } from "react";
 import { Box, Typography, Button, ButtonGroup } from "@mui/material";
-import Header from "../components/Header";
-import BottomNav from "../components/BottomNav";
-import MuscleSelector from "../components/MuscleSelector";
-import ExercisePicker from "../components/ExercisePicker";
-import PlanPreview from "../components/PlanPreview";
-import SavePlanWizard, { PlansByDay } from "../components/SavePlanWizard";
+import Header from "../../components/Header";
+import BottomNav from "../../components/BottomNav";
+import MuscleSelector from "../../components/MuscleSelector";
+import ExercisePicker from "../../components/ExercisePicker";
+import PlanPreview from "../../components/PlanPreview";
+import SavePlanWizard, { PlansByDay } from "../../components/SavePlanWizard";
 
 export default function WorkoutBuilderPage() {
   const [selectedDay, setSelectedDay] = useState<"A" | "B" | "C">("A");

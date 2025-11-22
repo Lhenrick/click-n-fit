@@ -41,10 +41,10 @@ export default function Header() {
           <Link href="/">
             <Box display="flex" alignItems="center" gap={1}>
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="Click N Fit Logo"
-                width={50}
-                height={50}
+                width={60}
+                height={60}
               />
             </Box>
           </Link>
